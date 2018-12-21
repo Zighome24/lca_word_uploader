@@ -21,5 +21,9 @@
   "bugs": {
     "url": "https://github.com/Zighome24/lca_word_uploader/issues"
   },
-  "homepage": "https://github.com/Zighome24/lca_word_uploader#readme"
+  "homepage": "https://github.com/Zighome24/lca_word_uploader#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "googleapis": "^27.0.0"
+  }
 }
