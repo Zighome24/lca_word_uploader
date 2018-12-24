@@ -57,23 +57,25 @@ function getFoldersUnderParent(parentFolderId) {
 }
 
 function getEverything() {
-    console.log(jwToken.email);
-    drive.files.list({
-        auth: jwToken,
-        pageSize: 10,
-        spaces: 'drive',
-        fields: 'files(id, name, mimeType, parents)',
-    }, (err, { data }) => {
-        if (err) return console.log('The API return an error: ' + err);
-        const files = data.files;
-        if (files.length) {
-            console.log('Files:');
-            files.map((file) => {
-                console.log('%s (%s) m:%s ', file.name, file.id, file.mimeType, file.parents);
-            })
-        } else {
-            console.log('No files found');
-        }
+    return new Promise(resolve => {
+        drive.files.list({
+            auth: jwToken,
+            pageSize: 10,
+            spaces: 'drive',
+            fields: 'files(id, name, mimeType, parents)',
+        }, (err, { data }) => {
+            if (err) return console.log('The API return an error: ' + err);
+            const files = data.files;
+            if (files.length) {
+                console.log('Files:');
+                files.map((file) => {
+                    console.log('%s (%s) m:%s ', file.name, file.id, file.mimeType, file.parents);
+                })
+            } else {
+                console.log('No files found');
+            }
+            resolve(files);
+        });
     });
 }
 
