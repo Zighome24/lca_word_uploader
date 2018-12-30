@@ -10,7 +10,7 @@ This is a project started in December 2018 by Justin Ziegler to create the found
 - To avoid using heavy and/or slow frameworks like jQuery, Bootstrap, etc.
 - To use native JavaScript and browser features wherever possible to reduce execution and load time.
 
-## How-to: get started
+## How to get started
 
 This how-to is going to assume you have NodeJs, Express, npm, an internet connection, git, a brain, some time, a Google Account, and a focus greater than that of a 4 year-old (the last one isn't actually required, I managed to write this despite that).
 
