@@ -20,6 +20,7 @@ jwToken.authorize((authErr) => {
 
 const drive = google.drive({version: 'v3'})
 
+/*
 function getFilesUnderParent(parentFolderId) {
     drive.files.list({
         q: "'" + parentFolderId + "' in parents and trashed=false and mimeType!='application/vnd.google-apps.folder'",
@@ -55,7 +56,7 @@ function getFoldersUnderParent(parentFolderId) {
         }
     });
 }
-
+*/
 function getEverything() {
     return new Promise(resolve => {
         drive.files.list({
@@ -67,20 +68,20 @@ function getEverything() {
             if (err) return console.log('The API return an error: ' + err);
             const files = data.files;
             if (files.length) {
-                console.log('Files:');
-                files.map((file) => {
-                    console.log('%s (%s) m:%s ', file.name, file.id, file.mimeType, file.parents);
-                })
+                console.log('%d Files found', files.length);
             } else {
                 console.log('No files found');
             }
             resolve(files);
         });
+    }).catch((reason) => {
+        console.log('The attempt to retrieve all Google Drive files failed for reason:');
+        console.log(reason);
     });
 }
 
 module.exports = {
-    getFilesUnderParent,
-    getFoldersUnderParent,
+    //getFilesUnderParent,
+    //getFoldersUnderParent,
     getEverything
 }
